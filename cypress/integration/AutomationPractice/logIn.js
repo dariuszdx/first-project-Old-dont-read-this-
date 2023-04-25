@@ -15,7 +15,7 @@ describe("E2E - Logowanie użytkownika", () => {
         cy.url().should('eq', 'http://automationpractice.pl/index.php?controller=authentication&back=my-account')
         //Wpisane wartości w pole E-mail adress
         cy.get("#email").invoke('show').type(userEmail);
-        //Asercja 
+        //Asercja. 
         cy.get("#email").should('have.value', 'dariusz.dulemba@gmail.com')
         // Pole password + asercja 
         cy.get("#passwd").type(password).should('have.value', 'Password1!')
