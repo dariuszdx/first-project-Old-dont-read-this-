@@ -1,0 +1,14 @@
+{
+    "baseUrl": "http://automationpractice.pl/index.php",
+    "includeShadowDom": true,
+    "chromeWebSecurity": true,
+    "viewportHeight": 1080,
+    "viewportWidth": 1920,
+    "video": false,
+    "theme": "dark",
+    "reporter": "cypress-multi-reporters",
+    "email": "dariusz.dulemba@gmail.com",
+    "reporterOptions": {
+        "configFile": "reporter-config.json"
+    }
+}

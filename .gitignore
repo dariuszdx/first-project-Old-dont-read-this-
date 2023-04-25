@@ -1,0 +1,9 @@
+*./integration/Przykłady
+*./integration/Testy-API
+*.screenshots
+*.fixtures
+*.download
+*.config
+*.cypress\integration\Przykłady\Przykłady
+
+node_modules
