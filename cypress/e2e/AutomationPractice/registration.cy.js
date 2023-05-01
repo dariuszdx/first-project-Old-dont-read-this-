@@ -1,5 +1,5 @@
 /// <reference types= "cypress"/>
-import { userEmail, password } from './variables';
+import { userEmail, password } from './variables.cy';
 
 
 describe("E2E - Registration of user", () => {
