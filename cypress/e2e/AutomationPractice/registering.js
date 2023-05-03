@@ -2,50 +2,59 @@
 import { userEmail, password } from './variables.cy';
 
 
-describe("E2E - Registration of user", () => {
-    it(" Registration ", () => {
-        //Go to the page
+describe("E2E - Registering a new user", () => {
+    it(" Should be able to register a new user ", () => {
+        // Visit home page and verify URL and title
         cy.visit("/")
-        //Assertion 
         cy.url().should('eq', 'http://automationpractice.pl/index.php')
         cy.title().should('eq', 'My Store')
-        //Clicking on the "Sign In" button
+
+        // Click on the "Sign In" button and verify URL
         cy.get(".login").click();
-        //Asertion 
         cy.url().should('eq', 'http://automationpractice.pl/index.php?controller=authentication&back=my-account')
-        //Entering a value in the E-mail address field
+
+        // Enter user email and click on the "Create an account" button and verify field
         cy.get("#email_create").invoke('show').type(userEmail);
-        //Asertion 
         cy.get("#email_create").should('have.value', userEmail)
-        //Clicking on the "Create an account" button
         cy.get("#SubmitCreate > span").click()
 
 
-        //Completing fields + assertions
-        // Checkbox Title
+        // Complete the registration form and verify form fields
+        // Select title checkbox
         cy.get("#id_gender1").check().should('be.checked')
-        // Fisrtname field
+
+        // Enter first name and verify
         cy.get("#customer_firstname").type("Dariusz").should('have.value', 'Dariusz')
-        // Lastname field 
+
+        // Enter last name and verify
         cy.get("#customer_lastname").type("Bamboo").should('have.value', 'Bamboo')
-        // Password field
+
+        // Enter password and verify 
         cy.get("#passwd").type(password).should('have.value', password)
-        // Dropdown days
+
+        // Select birth day and verify 
         cy.get('#days').select(24).should('have.value', '24')
-        // Dropdown months
+
+        // Select birth month and verify
         cy.get('#months').select("July").should('contain.text', 'July')
-        // Dropdown years
+
+        // Select birth year and verify 
         cy.get('#years').select("1991").should('have.value', "1991")
-        // Checkbox newsletter
+
+        // Select newsletter checkbox and verify 
         cy.get("#newsletter").check().should('be.checked')
-        // Checkbox offers
+
+        // Select offers checkbox and verify 
         cy.get("#optin").click().should('be.checked')
-        // Clicking on the "Register" button
+
+        // Click on the "Register" button
         cy.get("#submitAccount > span").click()
-        // Asertion for creating account
+
+        // Verify that user account has been created successfully
         cy.url().should('eq', 'http://automationpractice.pl/index.php?controller=my-account')
         cy.get(".alert").should('contain', 'Your account has been created')
-        //Log out + Assertion
+
+        // Log out and verify URL
         cy.get('.logout').click();
         cy.url().should('eq', 'http://automationpractice.pl/index.php?controller=authentication&back=my-account');
     });
