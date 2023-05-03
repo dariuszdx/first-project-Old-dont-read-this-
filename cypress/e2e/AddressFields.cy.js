@@ -15,8 +15,8 @@ describe("E2E - Completing the address fields", () => {
 
         // Enter email and password and click on the "Sign in" button and verify fields
         cy.get("#email").invoke('show').type(userEmail);
-        cy.get("#email").should('have.value', 'dariusz.dulemba@gmail.com')
-        cy.get("#passwd").type(password).should('have.value', 'Password1!')
+        cy.get("#email").should('have.value', userEmail)
+        cy.get("#passwd").type(password).should('have.value', password)
         cy.get("#SubmitLogin > span").click()
 
         // Verify that the user has successfully logged to the account page
@@ -54,7 +54,7 @@ describe("E2E - Completing the address fields", () => {
 
         // Click on the "Sign Out" button and verify URL
         cy.get('.logout').click();
-        cy.url().should('eq', 'http://automationpractice.pl/index.php?controller=authentication&back=my-account')
+        cy.url().should('eq', 'http://automationpractice.pl/index.php?controller=authentication&back=addresses')
 
     })
 })

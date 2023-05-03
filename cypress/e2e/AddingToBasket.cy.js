@@ -1,5 +1,5 @@
 /// <reference types= "cypress"/>
-import { userEmail, password } from './variables.cy';
+import { userEmail, password } from './variables.cy.js';
 
 describe("E2E -Adding product to cart/basket", () => {
     it(" Should add items to the cart/basket", () => {
@@ -51,7 +51,7 @@ describe("E2E -Adding product to cart/basket", () => {
         cy.url().should('eq', 'http://automationpractice.pl/index.php?controller=order')
         cy.get('.cart_description .product-name').eq(0)
 
-        //Log out + Assertion
+        // Click on the "Sign Out" button and verify URL
         cy.get('.logout').click();
         cy.url().should('eq', 'http://automationpractice.pl/index.php?controller=order')
 
