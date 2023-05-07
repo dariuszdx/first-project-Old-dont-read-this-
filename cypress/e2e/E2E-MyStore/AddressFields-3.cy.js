@@ -1,6 +1,6 @@
 /// <reference types= "cypress"/>
 import { userEmail, password } from './variables.cy';
-
+import LogingFormPage, { LoginFormPage } from '../../Pages/componetns/LogingFormPage';
 
 describe("E2E - Completing the address fields", () => {
     it(" Address should be updated ", () => {
@@ -14,10 +14,11 @@ describe("E2E - Completing the address fields", () => {
         cy.url().should('eq', 'http://automationpractice.pl/index.php?controller=authentication&back=my-account')
 
         // Enter email and password and click on the "Sign in" button and verify fields
-        cy.get("#email").invoke('show').type(userEmail);
-        cy.get("#email").should('have.value', userEmail)
-        cy.get("#passwd").type(password).should('have.value', password)
-        cy.get("#SubmitLogin > span").click()
+        LogingFormPage.fillEmail(userEmail)
+        LogingFormPage.emailField.should("have.value", userEmail)
+        LogingFormPage.fillPassword(password)
+        LogingFormPage.passwordField.should("have.value", password)
+        LogingFormPage.submitClick
 
         // Verify that the user has successfully logged to the account page
         cy.url().should('eq', 'http://automationpractice.pl/index.php?controller=my-account')

@@ -14,7 +14,7 @@ describe("E2E - Registering a new user", () => {
         cy.url().should('eq', 'http://automationpractice.pl/index.php?controller=authentication&back=my-account')
 
         // Enter user email and click on the "Create an account" button and verify field
-        cy.get("#email_create").invoke('show').type(userEmail);
+        cy.get("#email_create").type(userEmail);
         cy.get("#email_create").should('have.value', userEmail)
         cy.get("#SubmitCreate > span").click()
 
