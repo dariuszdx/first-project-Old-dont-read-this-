@@ -15,6 +15,7 @@ module.exports = defineConfig({
   e2e: {
     setupNodeEvents(on, config) { },
     baseUrl: 'http://automationpractice.pl/index.php',
-    supportFile: false
+    supportFile: false,
+    testIsolation: false
   }
 })

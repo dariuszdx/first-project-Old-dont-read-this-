@@ -4,7 +4,7 @@ import { visitMainPage } from "../../Pages/components/mainPage";
 import { userEmail, password } from './variables.cy';
 const originDomain = 'http://automationpractice.pl'
 
-describe("E2E - Loggin of existing user", () => {
+describe("E2E - Logging of existing user", () => {
     beforeEach(() => {
         cy.visitMainPage();
         cy.get(".login").click();
