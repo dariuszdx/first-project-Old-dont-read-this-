@@ -1,8 +1,9 @@
 /// <reference types= "cypress"/>
 import { userEmail, password } from './variables.cy.js';
-import LogingFormPage, { LoginFormPage } from '../../Pages/componetns/LogingFormPage';
-describe("E2E -Removing product from basket", () => {
-    it(" Should be able to removing product from basket", () => {
+import logingFormPage, { loginFormPage } from '../../Pages/componetns/LogingFormPage.js';
+
+describe("E2E -Adding product to cart/basket", () => {
+    it(" Should add items to the cart/basket", () => {
 
         // Visit home page and verify URL and title
         cy.visit("/")
@@ -14,11 +15,11 @@ describe("E2E -Removing product from basket", () => {
         cy.url().should('eq', 'http://automationpractice.pl/index.php?controller=authentication&back=my-account')
 
         // Enter email and password and click on the "Sign in" button
-        LogingFormPage.fillEmail(userEmail)
-        LogingFormPage.emailField.should("have.value", userEmail)
-        LogingFormPage.fillPassword(password)
-        LogingFormPage.passwordField.should("have.value", password)
-        LogingFormPage.submitClick
+        logingFormPage.fillEmail(userEmail)
+        logingFormPage.emailField.should("have.value", userEmail)
+        logingFormPage.fillPassword(password)
+        logingFormPage.passwordField.should("have.value", password)
+        logingFormPage.submitClick
 
         // Verify that the user has successfully logged to the account page
         cy.url().should('eq', 'http://automationpractice.pl/index.php?controller=my-account')
@@ -51,13 +52,6 @@ describe("E2E -Removing product from basket", () => {
         cy.get('.shopping_cart > a').click()
         cy.url().should('eq', 'http://automationpractice.pl/index.php?controller=order')
         cy.get('.cart_description .product-name').eq(0)
-
-        // Removing product from the basket and verify
-        cy.get('.icon-trash').first().click();
-        cy.get('.cart_quantity_input').should('have.value', '1');
-        cy.wait(5000)
-        cy.get('.icon-trash').first().click();
-        cy.get('.alert').should('contain', 'Your shopping cart is empty')
 
         // Click on the "Sign Out" button and verify URL
         cy.get('.logout').click();

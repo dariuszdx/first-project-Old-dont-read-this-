@@ -7,6 +7,7 @@ class LoginFormPage {
     }
     fillEmail(userEmail) {
         this.emailField.type(userEmail)
+
     }
     fillPassword(password) {
         this.passwordField.type(password)

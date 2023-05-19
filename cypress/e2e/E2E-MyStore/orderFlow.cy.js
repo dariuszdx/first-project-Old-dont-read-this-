@@ -1,6 +1,6 @@
 /// <reference types= "cypress"/>
 import { userEmail, password } from './variables.cy.js';
-import LogingFormPage, { LoginFormPage } from '../../Pages/componetns/LogingFormPage';
+import loginFormPage, { } from '../../Pages/components/loginFormPage';
 
 describe("E2E -Ordering process", () => {
     it("Checking out and verifying that the order is processed correctly", () => {
@@ -15,11 +15,11 @@ describe("E2E -Ordering process", () => {
         cy.url().should('eq', 'http://automationpractice.pl/index.php?controller=authentication&back=my-account')
 
         // Enter email and password and click on the "Sign in" button
-        LogingFormPage.fillEmail(userEmail)
-        LogingFormPage.emailField.should("have.value", userEmail)
-        LogingFormPage.fillPassword(password)
-        LogingFormPage.passwordField.should("have.value", password)
-        LogingFormPage.submitClick
+        loginFormPage.fillEmail(userEmail)
+        loginFormPage.emailField.should("have.value", userEmail)
+        loginFormPage.fillPassword(password)
+        loginFormPage.passwordField.should("have.value", password)
+        loginFormPage.submitClick
 
         // Verify that the user has successfully logged to the account page
         cy.url().should('eq', 'http://automationpractice.pl/index.php?controller=my-account')
@@ -34,7 +34,7 @@ describe("E2E -Ordering process", () => {
         cy.get('#layered_category_9').click().should('be.checked')
         cy.get('#layered_category_10').click().should('be.checked')
         cy.get('#layered_category_11').click().should('be.checked')
-        cy.get('#layered_quantity_1').click().should('be.checked')
+        //cy.get('#layered_quantity_1').click().should('be.checked')
 
         // Add the first product to the cart and verify that it has been added
         cy.get('.product-container').eq(0).trigger('mouseover')

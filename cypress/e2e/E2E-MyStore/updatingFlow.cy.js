@@ -1,9 +1,9 @@
 /// <reference types= "cypress"/>
 import { userEmail, password } from './variables.cy.js';
-import LogingFormPage, { LoginFormPage } from '../../Pages/componetns/LogingFormPage';
+import LogingFormPage, { LoginFormPage } from '../../Pages/componetns/LogingFormPage.js';
 
-describe("E2E -Adding product to cart/basket", () => {
-    it(" Should add items to the cart/basket", () => {
+describe("E2E -Updating the quantity of product", () => {
+    it(" Should be able to change quanitity of product in basket ", () => {
 
         // Visit home page and verify URL and title
         cy.visit("/")
@@ -24,7 +24,6 @@ describe("E2E -Adding product to cart/basket", () => {
         // Verify that the user has successfully logged to the account page
         cy.url().should('eq', 'http://automationpractice.pl/index.php?controller=my-account')
         cy.get(".info-account").should('contain', 'Welcome to your account. Here you can manage all of your personal information and orders.')
-
 
         // Click on the "Women" category link and verify the URL
         cy.get('.sf-menu > :nth-child(2) > .sf-with-ul').click()
@@ -52,6 +51,10 @@ describe("E2E -Adding product to cart/basket", () => {
         cy.get('.shopping_cart > a').click()
         cy.url().should('eq', 'http://automationpractice.pl/index.php?controller=order')
         cy.get('.cart_description .product-name').eq(0)
+
+        // Change QTY of product and verify new quantity- value of the locator need to be changed every single test to avoid issue "I didnt resolve that locator problem yet"
+        cy.get('.cart_quantity [type="text"]').first().type(3).wait(2000).should('have.value', 3)
+        cy.get('.cart_quantity [type="text"]').eq(1).type(2).wait(2000).should('have.value', 2)
 
         // Click on the "Sign Out" button and verify URL
         cy.get('.logout').click();

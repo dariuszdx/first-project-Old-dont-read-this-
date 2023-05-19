@@ -1,9 +1,8 @@
 /// <reference types= "cypress"/>
 import { userEmail, password } from './variables.cy.js';
-import LogingFormPage, { LoginFormPage } from '../../Pages/componetns/LogingFormPage';
-
-describe("E2E -Updating the quantity of product", () => {
-    it(" Should be able to change quanitity of product in basket ", () => {
+import LogingFormPage, { LoginFormPage } from '../../Pages/componetns/LogingFormPage.js';
+describe("E2E -Removing product from basket", () => {
+    it(" Should be able to removing product from basket", () => {
 
         // Visit home page and verify URL and title
         cy.visit("/")
@@ -24,6 +23,7 @@ describe("E2E -Updating the quantity of product", () => {
         // Verify that the user has successfully logged to the account page
         cy.url().should('eq', 'http://automationpractice.pl/index.php?controller=my-account')
         cy.get(".info-account").should('contain', 'Welcome to your account. Here you can manage all of your personal information and orders.')
+
 
         // Click on the "Women" category link and verify the URL
         cy.get('.sf-menu > :nth-child(2) > .sf-with-ul').click()
@@ -52,9 +52,12 @@ describe("E2E -Updating the quantity of product", () => {
         cy.url().should('eq', 'http://automationpractice.pl/index.php?controller=order')
         cy.get('.cart_description .product-name').eq(0)
 
-        // Change QTY of product and verify new quantity- value of the locator need to be changed every single test to avoid issue "I didnt resolve that locator problem yet"
-        cy.get('.cart_quantity [type="text"]').first().type(3).wait(2000).should('have.value', 3)
-        cy.get('.cart_quantity [type="text"]').eq(1).type(2).wait(2000).should('have.value', 2)
+        // Removing product from the basket and verify
+        cy.get('.icon-trash').first().click();
+        cy.get('.cart_quantity_input').should('have.value', '1');
+        cy.wait(5000)
+        cy.get('.icon-trash').first().click();
+        cy.get('.alert').should('contain', 'Your shopping cart is empty')
 
         // Click on the "Sign Out" button and verify URL
         cy.get('.logout').click();
