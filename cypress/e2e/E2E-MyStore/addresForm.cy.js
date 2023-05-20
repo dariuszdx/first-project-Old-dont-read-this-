@@ -1,36 +1,55 @@
 /// <reference types= "cypress"/>
+import { describe, before, it } from 'mocha';
+import loginFormPage, { } from '../../Pages/components/loginFormPage';
+import { visitMainPage } from "../../Pages/components/mainPage";
 import { userEmail, password } from './variables.cy';
-import LogingFormPage, { LoginFormPage } from '../../Pages/componetns/LogingFormPage';
+const originDomain = 'http://automationpractice.pl';
 
-describe("E2E - Completing the address fields", () => {
-    it(" Address should be updated ", () => {
-        // Visit home page and verify URL and title
-        cy.visit("/")
-        cy.url().should('eq', 'http://automationpractice.pl/index.php')
-        cy.title().should('eq', 'My Store')
 
-        // Click on the "Sign In" button and verify URL
+describe("E2E - Completing address fields", () => {
+    before(() => {
+        cy.visitMainPage();
         cy.get(".login").click();
-        cy.url().should('eq', 'http://automationpractice.pl/index.php?controller=authentication&back=my-account')
 
-        // Enter email and password and click on the "Sign in" button and verify fields
-        LogingFormPage.fillEmail(userEmail)
-        LogingFormPage.emailField.should("have.value", userEmail)
-        LogingFormPage.fillPassword(password)
-        LogingFormPage.passwordField.should("have.value", password)
-        LogingFormPage.submitClick
+        it('Authentication page should be open', () => {
+            const loginPage = `${originDomain}/index.php?controller=authentication&back=my-account`;
+            cy.url().should('eq', loginPage);
+        })
+    })
+    it('Login page should be open ', () => {
+        const loginPage = `${originDomain}/index.php?controller=authentication&back=my-account`;
+        cy.url().should('eq', loginPage)
+    });
 
-        // Verify that the user has successfully logged to the account page
-        cy.url().should('eq', 'http://automationpractice.pl/index.php?controller=my-account')
-        cy.get(".info-account").should('contain', 'Welcome to your account. Here you can manage all of your personal information and orders.')
+    it("Complete login fields and authorize", () => {
+        loginFormPage.fillEmail(userEmail)
+        loginFormPage.emailField.should("have.value", userEmail)
+        loginFormPage.fillPassword(password)
+        loginFormPage.passwordField.should("have.value", password)
+        loginFormPage.submitClick
+    })
 
-        // Click on the "Address" tab and check that the user is taken to the correct page
-        cy.get(".myaccount-link-list > :nth-child(1) > a > span").click()
-        cy.url().should('eq', 'http://automationpractice.pl/index.php?controller=address')
+    // Verify that the user has successfully logged to the account page
+    it('My-account page should be open and authorize', () => {
+        const accountPage = `${originDomain}/index.php?controller=my-account`;
+        cy.url().should('eq', accountPage)
+    })
+
+    it('"Welcome to your account" message should be visible ', () => {
+        const accountPageMessage = "Welcome to your account. Here you can manage all of your personal information and orders."
+        cy.get(".info-account").should('contain', accountPageMessage)
+    })
+    // Click on the "Address" tab and check that the user is taken to the correct page
+    it('"My first Address" tab should be open verify', () => {
+        cy.get(".myaccount-link-list > :nth-child(1) > a > span").click();
+        const addressPage = `${originDomain}/index.php?controller=address`;
+        cy.url().should('eq', addressPage)
+    })
+    it('Should complete address fields and verify ', () => {
 
         // Check that the first and last name fields are pre-filled with the user's information
-        cy.get("#firstname").should('have.value', 'Dariusz')
-        cy.get('#lastname').should('have.value', 'Bamboo')
+        cy.get("#firstname").should('have.value', 'John')
+        cy.get('#lastname').should('have.value', 'Doe')
 
         // Fill in the remaining fields and check that the values are correct
         cy.get("#company").type('Cotton & Green Leaves')
@@ -48,14 +67,18 @@ describe("E2E - Completing the address fields", () => {
         cy.get("#phone_mobile").type(777777777778).should('have.value', 777777777778)
         cy.get("#other").type('N/A').should('have.value', "N/A")
         cy.get("#alias").should('have.value', "My address")
+    })
 
-        // Click on the "Save" and verify URL
+    it("Address field should be updated succesfully", () => {
         cy.get("#submitAddress > span").click()
-        cy.url().should('eq', 'http://automationpractice.pl/index.php?controller=addresses')
+        const accountPage1 = `${originDomain}/index.php?controller=addresses`;
+        cy.url().should('eq', accountPage1)
 
-        // Click on the "Sign Out" button and verify URL
-        cy.get('.logout').click();
-        cy.url().should('eq', 'http://automationpractice.pl/index.php?controller=authentication&back=addresses')
 
+        it('User should be logged out', () => {
+            cy.get('.logout').click();
+            const logout = `${originDomain}/index.php?controller=authentication&back=my-account`;
+            cy.url().should('eq', logout);
+        })
     })
 })
