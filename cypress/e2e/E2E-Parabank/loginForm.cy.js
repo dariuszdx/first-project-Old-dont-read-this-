@@ -4,7 +4,7 @@ import { visitMainPage } from "../../Pages/components/mainPage";
 import { userEmail, password, userEmail1, password1 } from './variables.cy';
 const originDomain = 'https://parabank.parasoft.com/parabank/index.htm'
 
-describe("E2E - Register a new user", () => {
+describe("E2E - Logging as existing user", () => {
     before(() => {
         cy.visitMainPageParaBank();
     })

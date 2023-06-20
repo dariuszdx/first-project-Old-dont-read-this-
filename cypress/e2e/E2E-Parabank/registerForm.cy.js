@@ -46,7 +46,7 @@ describe("E2E - Register a new user", () => {
 
         cy.get('input[name="customer.password"]').type(password1).should('have.value', password1)
 
-        cy.get('input[name="repeatedPassword"]').type('Password1!').should('have.value', "Password1!")
+        cy.get('input[name="repeatedPassword"]').type(password1).should('have.value', password1)
 
         cy.get('[colspan="2"] > .button').click();
     });
