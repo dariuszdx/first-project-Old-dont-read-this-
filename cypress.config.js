@@ -16,9 +16,6 @@ module.exports = defineConfig(Object.assign(
     theme: 'dark',
     reporter: 'cypress-multi-reporters',
     email: 'dariusz.dulemba@gmail.com',
-    reporterOptions: {
-      configFile: 'reporter-config.json',
-    },
     e2e: {
       setupNodeEvents(on, config) { },
       baseUrl: 'http://automationpractice.pl/index.php',
