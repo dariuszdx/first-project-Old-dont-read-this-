@@ -2,8 +2,8 @@
 import { describe, before, it } from 'mocha';
 import loginFormPage, { } from '../../Pages/components/loginFormPage';
 import { visitMainPage } from "../../Pages/components/mainPage";
-import { userEmail, password } from './variables.cy';
-const originDomain = 'http://automationpractice.pl';
+import { userEmail, password } from '../../Pages/components/variables.cy';
+const originDomain = 'http://www.automationpractice.pl/index.php?';
 
 
 describe("E2E - Completing address fields", () => {
@@ -12,12 +12,12 @@ describe("E2E - Completing address fields", () => {
         cy.get(".login").click();
 
         it('Authentication page should be open', () => {
-            const loginPage = `${originDomain}/index.php?controller=authentication&back=my-account`;
+            const loginPage = `${originDomain}controller=authentication&back=my-account`;
             cy.url().should('eq', loginPage);
         })
     })
     it('Login page should be open ', () => {
-        const loginPage = `${originDomain}/index.php?controller=authentication&back=my-account`;
+        const loginPage = `${originDomain}controller=authentication&back=my-account`;
         cy.url().should('eq', loginPage)
     });
 
@@ -31,7 +31,7 @@ describe("E2E - Completing address fields", () => {
 
     // Verify that the user has successfully logged to the account page
     it('My-account page should be open and authorize', () => {
-        const accountPage = `${originDomain}/index.php?controller=my-account`;
+        const accountPage = `${originDomain}controller=my-account`;
         cy.url().should('eq', accountPage)
     })
 
@@ -42,7 +42,7 @@ describe("E2E - Completing address fields", () => {
     // Click on the "Address" tab and check that the user is taken to the correct page
     it('"My first Address" tab should be open verify', () => {
         cy.get(".myaccount-link-list > :nth-child(1) > a > span").click();
-        const addressPage = `${originDomain}/index.php?controller=address`;
+        const addressPage = `${originDomain}controller=address`;
         cy.url().should('eq', addressPage)
     })
     it('Should complete address fields and verify ', () => {
@@ -71,14 +71,13 @@ describe("E2E - Completing address fields", () => {
 
     it("Address field should be updated succesfully", () => {
         cy.get("#submitAddress > span").click()
-        const accountPage1 = `${originDomain}/index.php?controller=addresses`;
+        const accountPage1 = `${originDomain}controller=addresses`;
         cy.url().should('eq', accountPage1)
+    })
 
-
-        it('User should be logged out', () => {
-            cy.get('.logout').click();
-            const logout = `${originDomain}/index.php?controller=authentication&back=my-account`;
-            cy.url().should('eq', logout);
-        })
+    it('User should be logged out', () => {
+        cy.get('.logout').click();
+        const logout = `${originDomain}controller=authentication&back=addresses`;
+        cy.url().should('eq', logout);
     })
 })

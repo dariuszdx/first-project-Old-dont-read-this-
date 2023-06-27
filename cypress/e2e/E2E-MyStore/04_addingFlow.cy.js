@@ -2,8 +2,8 @@
 import { describe, before, it } from 'mocha';
 import loginFormPage, { } from '../../Pages/components/loginFormPage';
 import { visitMainPage } from "../../Pages/components/mainPage";
-import { userEmail, password } from './variables.cy';
-const originDomain = 'http://automationpractice.pl';
+import { userEmail, password } from '../../Pages/components/variables.cy';
+const originDomain = 'http://www.automationpractice.pl/index.php?';
 
 
 describe("E2E - Completing address fields", () => {
@@ -12,12 +12,12 @@ describe("E2E - Completing address fields", () => {
         cy.get(".login").click();
 
         it('Authentication page should be open', () => {
-            const loginPage = `${originDomain}/index.php?controller=authentication&back=my-account`;
+            const loginPage = `${originDomain}/controller=authentication&back=my-account`;
             cy.url().should('eq', loginPage);
         })
     })
     it('Login page should be open ', () => {
-        const loginPage = `${originDomain}/index.php?controller=authentication&back=my-account`;
+        const loginPage = `${originDomain}/controller=authentication&back=my-account`;
         cy.url().should('eq', loginPage)
     });
 
@@ -30,7 +30,7 @@ describe("E2E - Completing address fields", () => {
     })
 
     it('My-account page should be open and authorize', () => {
-        const accountPage = `${originDomain}/index.php?controller=my-account`;
+        const accountPage = `${originDomain}controller=my-account`;
         cy.url().should('eq', accountPage)
     })
 

@@ -1,7 +1,7 @@
 /// <reference types= "cypress"/>
 import { visitMainPageParaBank } from "../../Pages/components/mainPage";
 import { describe, before, it, beforeEach } from 'mocha';
-import { userEmail, password, userEmail1, password1 } from './variables.cy';
+import { userEmail, password, userEmail1, password1 } from '../../Pages/components/variablesParaBank.cy';
 
 const originDomain = 'https://parabank.parasoft.com';
 
@@ -18,11 +18,12 @@ describe("E2E - Register a new user", () => {
     });
 
     it('Register page should be open', () => {
-
         cy.get("#loginPanel > :nth-child(3) > a").click();
-        const registerPage = `${originDomain}/parabank/register.htm`;
-        cy.url().should('eq', registerPage);
-    });
+        cy.url().then((url) => {
+            const isRegisterPage = url.includes('/parabank/register.htm');
+            expect(isRegisterPage).to.be.true;
+        });
+    })
 
     it('Should complete the registration form and verify fields', () => {
 

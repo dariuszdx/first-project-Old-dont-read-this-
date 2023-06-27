@@ -1,5 +1,5 @@
 /// <reference types= "cypress"/>
-import { userEmail, password } from './variables.cy.js';
+import { userEmail, password } from '../../Pages/components/variables.cy';
 import LogingFormPage, { LoginFormPage } from '../../Pages/componetns/LogingFormPage.js';
 
 describe("E2E -Updating the quantity of product", () => {

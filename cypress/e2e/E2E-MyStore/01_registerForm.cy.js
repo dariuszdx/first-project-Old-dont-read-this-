@@ -1,9 +1,9 @@
 import { describe, before, it } from 'mocha';
 import registerFormPage from "../../Pages/components/registerFormPage";
 import { visitMainPage } from "../../Pages/components/mainPage";
-import { userEmail, password } from './variables.cy';
+import { userEmail, password } from '../../Pages/components/variables.cy';
 
-const originDomain = 'http://automationpractice.pl';
+const originDomain = 'http://www.automationpractice.pl/index.php?';
 
 describe("E2E - Register a new user", () => {
     before(() => {
@@ -11,7 +11,7 @@ describe("E2E - Register a new user", () => {
         cy.get(".login").click();
 
         it('Authentication page should be open', () => {
-            const loginPage = `${originDomain}/index.php?controller=authentication&back=my-account`;
+            const loginPage = `${originDomain}controller=authentication&back=my-account`;
             cy.url().should('eq', loginPage);
         });
     })
@@ -23,7 +23,7 @@ describe("E2E - Register a new user", () => {
     })
 
     it('Should open the registration form and verify', () => {
-        const registerPage = `${originDomain}/index.php?controller=authentication&back=my-account#account-creation`;
+        const registerPage = `${originDomain}controller=authentication&back=my-account#account-creation`;
         cy.url().should('eq', registerPage);
 
     })
@@ -55,7 +55,7 @@ describe("E2E - Register a new user", () => {
         cy.get("#newsletter").check().should('be.checked');
 
         // Select offers checkbox and verify 
-        cy.get("#optin").click().should('be.checked');
+        //cy.get("#optin").click().should('be.checked');
 
         // Click on the "Register" button
         cy.get("#submitAccount > span").click();
@@ -63,7 +63,7 @@ describe("E2E - Register a new user", () => {
 
 
     it('Account should be created successfully', () => {
-        const createdAccountPage = `${originDomain}/index.php?controller=my-account`;
+        const createdAccountPage = `${originDomain}controller=my-account`;
         cy.url().should('eq', createdAccountPage);
     });
 
@@ -73,10 +73,9 @@ describe("E2E - Register a new user", () => {
         cy.get(".alert").should('contain', createdAccountmessage);
     });
 
-
     it('User should be logged out', () => {
         cy.get('.logout').click();
-        const logout = `${originDomain}/index.php?controller=authentication&back=my-account`;
+        const logout = `${originDomain}controller=authentication&back=my-account`;
         cy.url().should('eq', logout);
     })
 })

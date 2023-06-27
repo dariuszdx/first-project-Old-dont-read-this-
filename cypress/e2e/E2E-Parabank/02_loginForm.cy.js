@@ -1,7 +1,7 @@
 import { beforeEach, before } from 'mocha';
 import loginFormPageParabank, { } from "../../Pages/components/loginFormPage-Parabank";
 import { visitMainPage } from "../../Pages/components/mainPage";
-import { userEmail, password, userEmail1, password1 } from './variables.cy';
+import { userEmail, password, userEmail1, password1 } from '../../Pages/components/variablesParaBank.cy';
 const originDomain = 'https://parabank.parasoft.com/parabank/index.htm'
 
 describe("E2E - Logging as existing user", () => {

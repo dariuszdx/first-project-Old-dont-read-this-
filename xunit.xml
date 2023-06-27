@@ -1,2 +1,38 @@
-<testsuite name="Mocha Tests" tests="0" failures="0" errors="0" skipped="0" timestamp="Wed, 21 Jun 2023 17:36:22 GMT" time="0">
+<testsuite name="Mocha Tests" tests="2" failures="0" errors="2" skipped="0" timestamp="Tue, 27 Jun 2023 02:45:45 GMT" time="68.186">
+<testcase classname="Menu Test" name="should navigate to the correct pages" time="0"><failure>Timed out after waiting &#x60;60000ms&#x60; for your remote page to load.
+
+Your page did not fire its &#x60;load&#x60; event within &#x60;60000ms&#x60;.
+
+You can try increasing the &#x60;pageLoadTimeout&#x60; value in &#x60;cypress.config.js&#x60; to wait longer.
+
+Browsers will not fire the &#x60;load&#x60; event until all stylesheets and scripts are done downloading.
+
+When this &#x60;load&#x60; event occurs, Cypress will continue running commands.
+CypressError: Timed out after waiting &#x60;60000ms&#x60; for your remote page to load.
+
+Your page did not fire its &#x60;load&#x60; event within &#x60;60000ms&#x60;.
+
+You can try increasing the &#x60;pageLoadTimeout&#x60; value in &#x60;cypress.config.js&#x60; to wait longer.
+
+Browsers will not fire the &#x60;load&#x60; event until all stylesheets and scripts are done downloading.
+
+When this &#x60;load&#x60; event occurs, Cypress will continue running commands.
+    at timedOutWaitingForPageLoad (https://parabank.parasoft.com/__cypress/runner/cypress_runner.js:147127:72)
+    at &#x3C;unknown&#x3E; (https://parabank.parasoft.com/__cypress/runner/cypress_runner.js:147425:16)
+    at tryCatcher (https://parabank.parasoft.com/__cypress/runner/cypress_runner.js:18744:23)
+    at &#x3C;unknown&#x3E; (https://parabank.parasoft.com/__cypress/runner/cypress_runner.js:13866:41)
+    at tryCatcher (https://parabank.parasoft.com/__cypress/runner/cypress_runner.js:18744:23)
+    at Promise._settlePromiseFromHandler (https://parabank.parasoft.com/__cypress/runner/cypress_runner.js:16679:31)
+    at Promise._settlePromise (https://parabank.parasoft.com/__cypress/runner/cypress_runner.js:16736:18)
+    at Promise._settlePromise0 (https://parabank.parasoft.com/__cypress/runner/cypress_runner.js:16781:10)
+    at Promise._settlePromises (https://parabank.parasoft.com/__cypress/runner/cypress_runner.js:16857:18)
+    at _drainQueueStep (https://parabank.parasoft.com/__cypress/runner/cypress_runner.js:13451:12)
+    at _drainQueue (https://parabank.parasoft.com/__cypress/runner/cypress_runner.js:13444:9)
+    at ../../node_modules/bluebird/js/release/async.js.Async._drainQueues (https://parabank.parasoft.com/__cypress/runner/cypress_runner.js:13460:5)
+    at Async.drainQueues (https://parabank.parasoft.com/__cypress/runner/cypress_runner.js:13330:14)
+From Your Spec Code:
+    at Context.eval (webpack:///./cypress/e2e/E2E-Parabank/menuTest.cy.js:30:11)</failure></testcase>
+<testcase classname="Menu Test" name="should highlight the active link" time="0"><failure>Timed out retrying after 4000ms: expected &#x27;&#x3C;a&#x3E;&#x27; to have class &#x27;selected&#x27;
+AssertionError: Timed out retrying after 4000ms: expected &#x27;&#x3C;a&#x3E;&#x27; to have class &#x27;selected&#x27;
+    at Context.eval (webpack:///./cypress/e2e/E2E-Parabank/menuTest.cy.js:41:28)</failure></testcase>
 </testsuite>

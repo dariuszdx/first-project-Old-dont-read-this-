@@ -1,8 +1,8 @@
 import { beforeEach, before } from 'mocha';
 import loginFormPage, { } from '../../Pages/components/loginFormPage';
 import { visitMainPage } from "../../Pages/components/mainPage";
-import { userEmail, password } from './variables.cy';
-const originDomain = 'http://automationpractice.pl'
+import { userEmail, password } from '../../Pages/components/variables.cy';
+const originDomain = 'http://www.automationpractice.pl/index.php?'
 
 describe("E2E - Logging as existing user", () => {
     before(() => {
@@ -10,7 +10,7 @@ describe("E2E - Logging as existing user", () => {
         cy.get(".login").click();
     });
     it('Login page should be open ', () => {
-        const loginPage = `${originDomain}/index.php?controller=authentication&back=my-account`;
+        const loginPage = `${originDomain}controller=authentication&back=my-account`;
         cy.url().should('eq', loginPage)
     });
 
@@ -23,7 +23,7 @@ describe("E2E - Logging as existing user", () => {
     })
 
     it('My account page should be open and authorize', () => {
-        const authorizedPage = `${originDomain}/index.php?controller=my-account`;
+        const authorizedPage = `${originDomain}controller=my-account`;
         cy.url().should('eq', authorizedPage);
     })
 
@@ -34,7 +34,7 @@ describe("E2E - Logging as existing user", () => {
 
     it('User should be logged out', () => {
         cy.get('.logout').click();
-        const logout = `${originDomain}/index.php?controller=authentication&back=my-account`;
+        const logout = `${originDomain}controller=authentication&back=my-account`;
         cy.url().should('eq', logout)
     })
 })

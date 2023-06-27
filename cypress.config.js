@@ -18,7 +18,7 @@ module.exports = defineConfig(Object.assign(
     email: 'dariusz.dulemba@gmail.com',
     e2e: {
       setupNodeEvents(on, config) { },
-      baseUrl: 'http://automationpractice.pl/index.php',
+      baseUrl: 'http://www.automationpractice.pl/index.php?',
       supportFile: false,
       testIsolation: false,
     },

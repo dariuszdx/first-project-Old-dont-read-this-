@@ -1,9 +1,8 @@
 /// <reference types= "cypress"/>
-import { userEmail, password } from './variables.cy.js';
-import loginFormPage, { } from '../../Pages/components/loginFormPage';
-
-describe("E2E -Ordering process", () => {
-    it("Checking out and verifying that the order is processed correctly", () => {
+import { userEmail, password } from '../../Pages/components/variables.cy';
+import LogingFormPage, { LoginFormPage } from '../../Pages/componetns/LogingFormPage.js';
+describe("E2E -Removing product from basket", () => {
+    it(" Should be able to removing product from basket", () => {
 
         // Visit home page and verify URL and title
         cy.visit("/")
@@ -15,11 +14,11 @@ describe("E2E -Ordering process", () => {
         cy.url().should('eq', 'http://automationpractice.pl/index.php?controller=authentication&back=my-account')
 
         // Enter email and password and click on the "Sign in" button
-        loginFormPage.fillEmail(userEmail)
-        loginFormPage.emailField.should("have.value", userEmail)
-        loginFormPage.fillPassword(password)
-        loginFormPage.passwordField.should("have.value", password)
-        loginFormPage.submitClick
+        LogingFormPage.fillEmail(userEmail)
+        LogingFormPage.emailField.should("have.value", userEmail)
+        LogingFormPage.fillPassword(password)
+        LogingFormPage.passwordField.should("have.value", password)
+        LogingFormPage.submitClick
 
         // Verify that the user has successfully logged to the account page
         cy.url().should('eq', 'http://automationpractice.pl/index.php?controller=my-account')
@@ -34,7 +33,7 @@ describe("E2E -Ordering process", () => {
         cy.get('#layered_category_9').click().should('be.checked')
         cy.get('#layered_category_10').click().should('be.checked')
         cy.get('#layered_category_11').click().should('be.checked')
-        //cy.get('#layered_quantity_1').click().should('be.checked')
+        cy.get('#layered_quantity_1').click().should('be.checked')
 
         // Add the first product to the cart and verify that it has been added
         cy.get('.product-container').eq(0).trigger('mouseover')
@@ -53,33 +52,16 @@ describe("E2E -Ordering process", () => {
         cy.url().should('eq', 'http://automationpractice.pl/index.php?controller=order')
         cy.get('.cart_description .product-name').eq(0)
 
-        // Confirm proceed to checkout and verify URL
-        cy.get('.cart_navigation > .button > span').click()
-        cy.url().should('eq', 'http://automationpractice.pl/index.php?controller=order&step=1')
-
-        // Click on the "Save" and verify URL
-        cy.get(".cart_navigation > .button > span").click()
-        cy.url().should('eq', 'http://automationpractice.pl/index.php?controller=order')
-
-        // Click on checkbox "Terms of service" and verify
-        cy.get('#cgv').check().should('be.checked')
-
-        // Confirm proceed to checkout and verify URL
-        cy.get('.cart_navigation > .button > span').click()
-        cy.url().should('eq', 'http://automationpractice.pl/index.php?controller=order')
-
-        // Click on paymant method and verify
-        cy.get('.bankwire').click()
-        cy.url().should('eq', 'http://automationpractice.pl/index.php?fc=module&module=bankwire&controller=payment')
-
-        //Confirming my order 
-        cy.get('#cart_navigation > .button > span').click()
-        cy.get('.alert').should('contain', 'Your order on My Store is complete.')
-
+        // Removing product from the basket and verify
+        cy.get('.icon-trash').first().click();
+        cy.get('.cart_quantity_input').should('have.value', '1');
+        cy.wait(5000)
+        cy.get('.icon-trash').first().click();
+        cy.get('.alert').should('contain', 'Your shopping cart is empty')
 
         // Click on the "Sign Out" button and verify URL
         cy.get('.logout').click();
-        cy.url().should('eq', 'http://automationpractice.pl/index.php?controller=authentication&back=history')
+        cy.url().should('eq', 'http://automationpractice.pl/index.php?controller=order')
 
     })
 })
