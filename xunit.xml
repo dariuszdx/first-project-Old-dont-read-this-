@@ -1,9 +1,9 @@
-<testsuite name="Mocha Tests" tests="1" failures="0" errors="1" skipped="0" timestamp="Mon, 14 Aug 2023 09:36:12 GMT" time="0.135">
-<testcase classname="E2E - Logging as existing user" name="&#x22;before all&#x22; hook for &#x22;Main page should be open&#x22;" time="0"><failure>cy.visitMainPageParaBank is not a function
+<testsuite name="Mocha Tests" tests="1" failures="0" errors="1" skipped="0" timestamp="Mon, 14 Aug 2023 09:54:12 GMT" time="0.242">
+<testcase classname="E2E - Register a new user" name="&#x22;before all&#x22; hook for &#x22;Main page should be open&#x22;" time="0"><failure>cy.visitMainPageParaBank is not a function
 
-Because this error occurred during a &#x60;before all&#x60; hook we are skipping the remaining tests in the current suite: &#x60;E2E - Logging as existing user&#x60;
+Because this error occurred during a &#x60;before all&#x60; hook we are skipping the remaining tests in the current suite: &#x60;E2E - Register a new user&#x60;
 TypeError: cy.visitMainPageParaBank is not a function
 
-Because this error occurred during a &#x60;before all&#x60; hook we are skipping the remaining tests in the current suite: &#x60;E2E - Logging as existing user&#x60;
-    at Context.eval (webpack:///./cypress/e2e/E2E-Parabank/02_loginForm.cy.js:9:11)</failure></testcase>
+Because this error occurred during a &#x60;before all&#x60; hook we are skipping the remaining tests in the current suite: &#x60;E2E - Register a new user&#x60;
+    at Context.eval (webpack:///./cypress/e2e/E2E-Parabank/01_registerForm.cy.js:12:11)</failure></testcase>
 </testsuite>

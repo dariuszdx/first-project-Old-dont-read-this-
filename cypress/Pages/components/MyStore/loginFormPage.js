@@ -1,4 +1,4 @@
-import { password, userEmail } from "../../Pages/components/variables.cy";
+import { password, userEmail } from "./variables.cy";
 class LoginFormPage {
 
     get emailField() {

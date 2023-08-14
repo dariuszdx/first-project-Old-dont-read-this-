@@ -1,7 +1,7 @@
 /// <reference types= "cypress"/>
-import { visitMainPageParaBank } from "../../Pages/components/mainPage";
+import { visitMainPageParaBank } from "../../Pages/components/MyStore/mainPage";
 import { describe, before, it, beforeEach } from 'mocha';
-import { userEmail, password, userEmail1, password1 } from '../../Pages/components/variablesParaBank.cy';
+import { userEmail, password, userEmail1, password1 } from '../../Pages/components/ParaBank/variablesParaBank.cy';
 
 const originDomain = 'https://parabank.parasoft.com';
 

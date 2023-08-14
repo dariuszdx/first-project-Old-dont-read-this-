@@ -1,7 +1,7 @@
 import { describe, before, it } from 'mocha';
-import registerFormPage from "../../Pages/components/registerFormPage";
-import { originDomain } from '../../Pages/components/variables.cy';
-import authorization, { } from "../../Pages/components/authorization";
+import registerFormPage from "../../Pages/components/MyStore/registerFormPage";
+import { originDomain } from "../../Pages/components/MyStore/variables.cy";
+import authorization, { } from "../../Pages/components/MyStore/authorization";
 
 
 describe("E2E - Register a new user", () => {

@@ -1,7 +1,7 @@
 import { describe, before, it } from 'mocha';
-import { originDomain } from '../../Pages/components/variables.cy';
-import authorization from "../../Pages/components/authorization";
-import loginFormPage from '../../Pages/components/loginFormPage';
+import { originDomain } from "../../Pages/components/MyStore/variables.cy";
+import authorization, { } from "../../Pages/components/MyStore/authorization";
+import loginFormPage from '../../Pages/components/MyStore/loginFormPage';
 
 describe("E2E - Logging as an existing user", () => {
     before(() => {

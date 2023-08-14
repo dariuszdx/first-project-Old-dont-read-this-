@@ -1,9 +1,7 @@
 import { describe, before, it } from 'mocha';
-import { originDomain } from '../../Pages/components/variables.cy';
-import authorization from "../../Pages/components/authorization";
-import loginFormPage from '../../Pages/components/loginFormPage';
-import addressTab from '../../Pages/components/addressFormPage';
-import addressFormPage from '../../Pages/components/addressFormPage';
+import { originDomain } from "../../Pages/components/MyStore/variables.cy";
+import authorization, { } from "../../Pages/components/MyStore/authorization";
+import loginFormPage from '../../Pages/components/MyStore/loginFormPage';
 
 
 describe("E2E - Adding to basket flow", () => {

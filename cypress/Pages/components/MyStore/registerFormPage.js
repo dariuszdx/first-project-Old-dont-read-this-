@@ -1,4 +1,4 @@
-import { birthDay, birthMonth, birthYear, firstName, lastName, password, userEmail } from "../../Pages/components/variables.cy";
+import { birthDay, birthMonth, birthYear, firstName, lastName, password, userEmail } from "./variables.cy";
 
 class RegisterFormPage {
     get emailCreatField() {

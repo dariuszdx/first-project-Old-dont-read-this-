@@ -1,4 +1,4 @@
-import { companyName, addressName1, addressName2, firstName, lastName, city, state, postCode, country, phoneNumberMobile, phoneNumberHome, additionalInformation, myAddress } from "../../Pages/components/variables.cy";
+import { companyName, addressName1, addressName2, firstName, lastName, city, state, postCode, country, phoneNumberMobile, phoneNumberHome, additionalInformation, myAddress } from "./variables.cy";
 
 class addressFormPage {
     get addressTab() {
