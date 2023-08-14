@@ -1,6 +1,7 @@
 const { defineConfig } = require('cypress');
 
-module.exports = defineConfig(Object.assign(
+// Define the main Cypress config object
+const config = defineConfig(Object.assign(
   {
     reporterEnabled: 'spec, mocha-junit-reporter',
     mochaJunitReporterReporterOptions: {
@@ -16,11 +17,17 @@ module.exports = defineConfig(Object.assign(
     theme: 'dark',
     reporter: 'cypress-multi-reporters',
     email: 'dariusz.dulemba@gmail.com',
+  },
+  {
+    // e2e-specific configuration
     e2e: {
+      baseUrl: 'http://www.automationpractice.pl',
       setupNodeEvents(on, config) { },
-      baseUrl: 'http://www.automationpractice.pl/index.php?',
       supportFile: false,
       testIsolation: false,
     },
   }
 ));
+
+// Export the updated config object
+module.exports = config;
