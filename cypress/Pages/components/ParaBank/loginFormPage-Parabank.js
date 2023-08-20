@@ -1,24 +1,31 @@
-
+import { userName, password, firstName, lastName, address, city, state, zipCode, phoneNumber, ssn } from "./variablesParaBank.cy";
 class LoginFormPage {
+
+    get loginButton() {
+        return cy.get("#loginPanel > :nth-child(3) > a")
+    }
+
+    clickLoginButton(loginButton) {
+        this.loginButton.click();
+    }
     get emailField() {
         return cy.get("input[name='username']")
     }
     get passwordField() {
         return cy.get("input[name='password']")
     }
-    fillEmail(userEmail1) {
-        this.emailField.type(userEmail1)
+    fillUserName(emailField) {
+        this.emailField.type(userName)
 
     }
-    fillPassword(password1) {
-        this.passwordField.type(password1)
+    fillPassword(passwordField) {
+        this.passwordField.type(password)
     }
     get submit() {
         return cy.get("input[value='Log In']")
     }
-    get submitClick() {
+    submitClick(submit) {
         this.submit.click();
     }
-
 }
 export default new LoginFormPage();

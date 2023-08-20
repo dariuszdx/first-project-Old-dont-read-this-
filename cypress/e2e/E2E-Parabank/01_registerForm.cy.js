@@ -1,21 +1,22 @@
-import { describe, before, it, beforeEach } from 'mocha';
-import { userName, password, originDomain } from '../../Pages/components/ParaBank/variablesParaBank.cy';
+import { describe, before, it, } from 'mocha';
+import { originDomain } from '../../Pages/components/ParaBank/variablesParaBank.cy';
 import registerFormPage from '../../Pages/components/ParaBank/registerFormPage';
+import authorization from '../../Pages/components/ParaBank/authorization';
 
 
 describe("E2E - Register a new user", () => {
     before(() => {
         cy.visit(originDomain);
 
-        const mainPage = `${originDomain}`;
+        const mainPage = `${originDomain}/parabank/index.htm`;
         cy.url().should('eq', mainPage);
     });
 
     it('Register page should be open', () => {
-        registerFormPage.clickRegisterButton();
+        authorization.clickRegisterButton();
     });
 
-    it('Should complete the registration form and verify fields', () => {
+    it('Should complete the registration and login', () => {
 
         registerFormPage.fillFirstName();
         registerFormPage.fillLastName();
@@ -29,14 +30,12 @@ describe("E2E - Register a new user", () => {
         registerFormPage.fillPassword();
         registerFormPage.confirmPassword();
         registerFormPage.clickBtn();
-    });
 
-    it("Login page should be open", () => {
         const loginPage = `${originDomain}/parabank/register.htm`;
         cy.url().should('eq', loginPage);
     })
     it("User should be logged out", () => {
-        cy.get('#leftPanel > ul > :nth-child(8) > a').click();
+        authorization.clickLogoutButton();
         const mainPage2 = `${originDomain}/parabank/index.htm?ConnType=JDBC`;
         cy.url().should('eq', mainPage2);
 

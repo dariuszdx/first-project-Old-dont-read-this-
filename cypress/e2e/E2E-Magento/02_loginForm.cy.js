@@ -1,21 +1,24 @@
-import { beforeEach, before } from 'mocha';
-import loginFormPage, { } from '../../Pages/components/loginFormPage';
-import { visitMainPage } from "../../Pages/components/mainPage";
-import { userEmail, password } from '../../Pages/components/variables.cy';
-const originDomain = 'https://magento.softwaretestingboard.com'
+import { describe, before, it } from 'mocha';
+import { originDomain } from '../../Pages/components/Magento/vaiablesMagento.cy';
+import authorization, { } from "../../Pages/components/Magento/authorization";
+import loginFormPage, { } from "../../Pages/components/Magento/loginFormPage";
 
 describe('E2E-Logging as existing user', () => {
     before(() => {
         cy.visit(originDomain)
-        cy.get('.panel > .header > .authorization-link > a').click();
     })
 
-    it('Login page should be open', () => {
-        const loginPage = `${originDomain}/customer/account/login/referer/aHR0cHM6Ly9tYWdlbnRvLnNvZnR3YXJldGVzdGluZ2JvYXJkLmNvbS8%2C/`;
-        cy.url().should('eq', loginPage)
+    it('Should open login page and complete login fields', () => {
+        authorization.clickOnSignInButton();
+        loginFormPage.fillEmail();
+        loginFormPage.fillPassword();
+        loginFormPage.clickOnSignInButton();
     });
-
-    it('Complete login fields and authorize', () => {
-
+    it('User should be logged out', () => {
+        authorization.clickOnTheBMList();
+        authorization.clickOnSignOutButton();
+        cy.wait(10000);
+        const logout = `${originDomain}`;
+        cy.url().should('eq', logout);
     });
 })

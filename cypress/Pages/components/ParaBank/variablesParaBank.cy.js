@@ -1,6 +1,6 @@
-export const userName = 'Dariusz1';
+export const userName = 'Dariusz8';
 export const password = 'Password9!';
-export const originDomain = 'https://parabank.parasoft.com/parabank/index.htm';
+export const originDomain = 'https://parabank.parasoft.com';
 export const firstName = 'Dariusz'
 export const lastName = "Dembele"
 export const address = 'Krakowska 107'

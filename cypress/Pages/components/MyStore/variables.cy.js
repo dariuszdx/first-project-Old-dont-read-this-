@@ -1,4 +1,4 @@
-export const userEmail = 'darek@o317.pl';
+export const userEmail = 'darek@o321.pl';
 export const password = 'Password1!';
 export const originDomain = 'http://www.automationpractice.pl'
 export const firstName = 'Jaś'

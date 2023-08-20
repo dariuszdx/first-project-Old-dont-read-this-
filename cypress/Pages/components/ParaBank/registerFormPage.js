@@ -1,12 +1,5 @@
 import { userName, password, firstName, lastName, address, city, state, zipCode, phoneNumber, ssn } from "./variablesParaBank.cy";
 class registerFormPage {
-
-    get registerButton() {
-        return cy.get("#loginPanel > :nth-child(3) > a")
-    }
-    clickRegisterButton(registerButton) {
-        this.registerButton.click();
-    }
     get firstname() {
         return cy.get("input[name='customer.firstName']")
     }
@@ -73,11 +66,11 @@ class registerFormPage {
     confirmPassword(confirmed) {
         this.confirmed.type(password)
     }
-    get btn() {
-        return cy.get("#loginPanel > :nth-child(3) > a")
+    get btnAlias() {
+        return cy.get('[colspan="2"] > .button')
     }
-    clickBtn(btn) {
-        this.btn.click();
+    clickBtn(btnAlias) {
+        this.btnAlias.click();
     }
 }
 export default new registerFormPage();
