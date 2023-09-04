@@ -1,4 +1,4 @@
-class basketFormPage {
+class BasketFormPage {
     get proccedToCheckout() {
         return cy.get(".checkout-methods-items > :nth-child(1) > .action > span")
     }
@@ -6,4 +6,4 @@ class basketFormPage {
         this.proccedToCheckout.click();
     }
 }
-export default new basketFormPage();
+export default new BasketFormPage();

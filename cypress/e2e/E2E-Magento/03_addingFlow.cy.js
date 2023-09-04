@@ -3,7 +3,7 @@ import { originDomain } from '../../Pages/components/Magento/vaiablesMagento.cy'
 import authorization, { } from "../../Pages/components/Magento/authorization";
 import loginFormPage, { } from "../../Pages/components/Magento/loginFormPage";
 import buyingFormPage, { } from "../../Pages/components/Magento/buyingFormPage";
-import basketFormPage from '../../Pages/components/Magento/basketFormPage';
+import BasketFormPage from '../../Pages/components/Magento/basketFormPage';
 import shippingFormPage, { } from "../../Pages/components/Magento/shippingFormPage";
 
 
@@ -39,7 +39,7 @@ describe('E2E-Correct process of adding a product to the cart', () => {
         buyingFormPage.clickOnEditBasket();
         buyingFormPage.changeQtyOfProduct();
         cy.wait(1000)
-        basketFormPage.clickProccedToCheckout();
+        BasketFormPage.clickProccedToCheckout();
 
     });
     it('Should click on procced to checkout and fill the fields', () => {
