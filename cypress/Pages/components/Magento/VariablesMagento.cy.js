@@ -1,4 +1,4 @@
-export const userEmail = 'dariusz12@o2.pl';
+export const userEmail = 'dariusz14@o2.pl';
 export const passwordd = 'Password1!';
 export const originDomain = 'https://magento.softwaretestingboard.com/'
 export const firstName = 'Darek'

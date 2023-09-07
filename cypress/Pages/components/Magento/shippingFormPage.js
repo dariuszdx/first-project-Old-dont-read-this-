@@ -1,8 +1,8 @@
-import { city, company, country, phoneNumber, state, street, zipcode } from "../../components/Magento/vaiablesMagento.cy";
+import { city, company, country, phoneNumber, state, street, zipcode } from "./VariablesMagento.cy";
 
 class ShippingFormPage {
     get companyField() {
-        return cy.get('input[name="company"]');
+        return cy.get('#company');
     }
 
     fillCompanyName() {
@@ -10,7 +10,7 @@ class ShippingFormPage {
     }
 
     get streetAddressField() {
-        return cy.get('input[name="street[0]"]');
+        return cy.get('#street_1');
     }
 
     fillStreetAddress() {
@@ -18,7 +18,7 @@ class ShippingFormPage {
     }
 
     get cityField() {
-        return cy.get('input[name="city"]');
+        return cy.get('#city');
     }
 
     fillCityName() {
@@ -26,7 +26,7 @@ class ShippingFormPage {
     }
 
     get stateField() {
-        return cy.get('select[name="region_id"]');
+        return cy.get('#region_id');
     }
 
     selectStateName() {
@@ -34,7 +34,7 @@ class ShippingFormPage {
     }
 
     get zipCodeField() {
-        return cy.get('input[name="postcode"]');
+        return cy.get('#zip');
     }
 
     fillZipCode() {
@@ -42,7 +42,7 @@ class ShippingFormPage {
     }
 
     get countryField() {
-        return cy.get('select[name="country_id"]');
+        return cy.get('#country');
     }
 
     selectCountry() {
@@ -50,23 +50,41 @@ class ShippingFormPage {
     }
 
     get phoneField() {
-        return cy.get('input[name="telephone"]');
+        return cy.get('#telephone');
     }
 
     fillPhoneNumber() {
         this.phoneField.type(phoneNumber);
     }
     get next() {
-        return cy.get('.button > span')
+        return cy.get('.button > span').should('be.visible');
     }
     clickNextButton() {
         this.next.click();
     }
     get placeOrder() {
-        return cy.get('.payment-method-content > :nth-child(4) > div.primary > .action > span')
+        return cy.get('.payment-method-content > :nth-child(4) > div.primary > .action > span').should('be.visible');
     }
     clickPlaceOrderButton() {
         this.placeOrder.click();
+    }
+    get shippingMethod() {
+        return cy.get('#checkout-shipping-method-load');
+    }
+    shippingMethodShouldBeVisible() {
+        this.shippingMethod.should('be.visible');
+    }
+    get fiveDollarPaymant() {
+        return cy.get('.radio')
+    }
+    paymantShouldBeCheck() {
+        this.fiveDollarPaymant.should('be.checked');
+    }
+    get saveAddressButton() {
+        return cy.get('#form-validate > .actions-toolbar > div.primary > .action > span');
+    }
+    clickOnSaveAddresButton() {
+        this.saveAddressButton.click();
     }
 }
 

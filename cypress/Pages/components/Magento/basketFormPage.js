@@ -1,9 +1,9 @@
 class BasketFormPage {
-    get proccedToCheckout() {
-        return cy.get(".checkout-methods-items > :nth-child(1) > .action > span")
+    get proccedToCheckoutBTN() {
+        return cy.get('.checkout-methods-items > :nth-child(1) > .action > span', { timeout: 10000 }).should('be.visible');
     }
-    clickProccedToCheckout(proccedToCheckout) {
-        this.proccedToCheckout.click();
+    clickProccedToCheckoutBTN() {
+        this.proccedToCheckoutBTN.click();
     }
 }
 export default new BasketFormPage();

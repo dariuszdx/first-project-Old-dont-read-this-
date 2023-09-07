@@ -1,4 +1,4 @@
-import { firstName, lastName, userEmail, passwordd } from "../../components/Magento/vaiablesMagento.cy";
+import { firstName, lastName, userEmail, passwordd } from "./VariablesMagento.cy";
 class registerFormPage {
 
     get firstname() {

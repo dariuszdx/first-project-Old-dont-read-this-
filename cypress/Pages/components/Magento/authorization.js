@@ -1,5 +1,5 @@
 
-class authorization {
+class Authorization {
     get signIn() {
         return cy.get('.panel > .header > .authorization-link > a')
     }
@@ -20,7 +20,7 @@ class authorization {
         this.creatAnAccountBtn.click();
     }
     get list() {
-        return cy.get(':nth-child(2) > .customer-welcome > .customer-name > .action')
+        return cy.get(':nth-child(2) > .customer-welcome > .customer-name > .action').should('be.visible');
     }
     clickOnTheBMList() {
         this.list.click();
@@ -31,5 +31,18 @@ class authorization {
     clickOnSignOutButton(signOut) {
         this.signOut.click({ force: true });
     }
+    get myAccountButton() {
+        return cy.get(':nth-child(2) > .customer-welcome > .customer-menu > .header > :nth-child(1) > a').should('be.visible');
+    }
+    clickOnMyAccountButton() {
+        this.myAccountButton.click();
+    }
+    get myAddresButton() {
+        return cy.get('.block-title > .action > span')
+    }
+    clickOnMyAddresButton() {
+        this.myAddresButton.click();
+
+    }
 }
-export default new authorization();
+export default new Authorization();

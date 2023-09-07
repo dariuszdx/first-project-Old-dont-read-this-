@@ -1,4 +1,4 @@
-class buyingFormPage {
+class BuyingFormPage {
     get mensCategory() {
         return cy.get("#ui-id-5 > .ui-menu-icon")
     }
@@ -32,16 +32,16 @@ class buyingFormPage {
     clickOnRedColour(redColor) {
         this.redColor.click();
     }
-    get redJacket() {
-        return cy.get(".products > :nth-child(3)")
+    get jacket() {
+        return cy.get(":nth-child(1) > .filter-options-content > .items > :nth-child(2) > a")
     }
-    clickOnRedJacket(redJacket) {
-        this.redJacket.click();
+    clickOnJacket() {
+        this.jacket.click();
     }
     get addToCartButton() {
-        return cy.get("#product-addtocart-button > span")
+        return cy.get("#product-addtocart-button > span");
     }
-    clickOnAddToCartButton(addToCartButton) {
+    clickOnAddToCartButton() {
         this.addToCartButton.click();
     }
     get size() {
@@ -51,9 +51,9 @@ class buyingFormPage {
         this.size.click();
     }
     get jacketColour() {
-        return cy.get("#option-label-color-93-item-58")
+        return cy.get("#option-label-color-93-item-60")
     }
-    chooseRedColour() {
+    chooseYellowColour() {
         this.jacketColour.click();
     }
     get basket() {
@@ -63,7 +63,7 @@ class buyingFormPage {
         this.basket.click();
     }
     get editBasket() {
-        return cy.get(":nth-child(7) > .secondary > .action > span")
+        return cy.get(":nth-child(7) > .secondary > .action > span").should('be.visible');
     }
     clickOnEditBasket(editBasket) {
         this.editBasket.click();
@@ -72,7 +72,13 @@ class buyingFormPage {
         return cy.get('[title="Qty"]')
     }
     changeQtyOfProduct(qty) {
-        this.qty.click().clear().type(10)
+        this.qty.click().clear().type(1)
+    }
+    get jacket1() {
+        return cy.get('.product-image-photo')
+    }
+    clickOnJacket1() {
+        this.jacket1.click();
     }
 }
-export default new buyingFormPage();
+export default new BuyingFormPage();
