@@ -25,17 +25,17 @@ describe('E2E-Correct process of adding a product to the cart', () => {
         BuyingFormPage.clickOnMensJackets();
         BuyingFormPage.clickOnJacket();
         BuyingFormPage.clickOnJacket1();
-        BuyingFormPage.clickOnMsize();
+        BuyingFormPage.clickOnLsize();
         BuyingFormPage.chooseYellowColour();
         BuyingFormPage.clickOnAddToCartButton();
 
         const succesMessage = "You added Taurus Elements Shell to your shopping cart."
-        cy.get(".message-success").should('contain', succesMessage)
+        cy.get(".message-success").should('contain', succesMessage).should('be.visible');
 
         BuyingFormPage.clickOnBasket();
         BuyingFormPage.clickOnEditBasket();
         BuyingFormPage.changeQtyOfProduct();
-        cy.wait(10000)
+        cy.wait(5000)
         BasketFormPage.clickProccedToCheckoutBTN();
 
 
@@ -51,8 +51,8 @@ describe('E2E-Correct process of adding a product to the cart', () => {
     it('User should be logged out', () => {
         Authorization.clickOnTheBMList();
         Authorization.clickOnSignOutButton();
-        cy.wait(10000)
+        cy.wait(5000)
         const logout = `${originDomain}`;
-        cy.url().should('eq', logout);
+        cy.url().should('be.visible').should('eq', logout);
     })
 })

@@ -63,7 +63,7 @@ class ShippingFormPage {
         this.next.click();
     }
     get placeOrder() {
-        return cy.get('.payment-method-content > :nth-child(4) > div.primary > .action > span').should('be.visible');
+        return cy.get('span[data-bind="i18n: \'Place Order\'"]').contains('Place Order').should('be.visible');
     }
     clickPlaceOrderButton() {
         this.placeOrder.click();

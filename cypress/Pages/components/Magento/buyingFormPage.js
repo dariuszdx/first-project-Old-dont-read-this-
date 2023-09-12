@@ -19,17 +19,12 @@ class BuyingFormPage {
     }
     clickOnMensJackets(mensCategoryTopsJackets) {
         this.mensCategoryTopsJackets.click();
-    }
-    get color() {
-        return cy.get(':nth-child(4) > .filter-options-title')
-    }
-    clickOnColorTab(color) {
-        this.color.click();
+
     }
     get redColor() {
         return cy.get('div.swatch-option[option-id="58"]')
     }
-    clickOnRedColour(redColor) {
+    clickOnRedColour() {
         this.redColor.click();
     }
     get jacket() {
@@ -45,9 +40,9 @@ class BuyingFormPage {
         this.addToCartButton.click();
     }
     get size() {
-        return cy.get("#option-label-size-143-item-168")
+        return cy.get("#option-label-size-143-item-169")
     }
-    clickOnMsize(size) {
+    clickOnLsize(size) {
         this.size.click();
     }
     get jacketColour() {
@@ -72,7 +67,7 @@ class BuyingFormPage {
         return cy.get('[title="Qty"]')
     }
     changeQtyOfProduct(qty) {
-        this.qty.click().clear().type(1)
+        this.qty.click().clear().type(1);
     }
     get jacket1() {
         return cy.get('.product-image-photo')
