@@ -1,0 +1,4 @@
+<testsuite name="Mocha Tests" tests="2" failures="0" errors="0" skipped="0" timestamp="Sun, 20 Aug 2023 15:54:59 GMT" time="4.921">
+<testcase classname="E2E - Logging as existing user" name="Complete login fields and authorize" time="2.568"/>
+<testcase classname="E2E - Logging as existing user" name="User should be logged out" time="0.783"/>
+</testsuite>

@@ -1,0 +1,39 @@
+{
+  "name": "cypress-project",
+  "version": "1.0.0",
+  "description": "Testy automatyczne cypress",
+  "main": "index.js",
+  "scripts": {
+    "open": "npx cypress open",
+    "all": "npx cypress run",
+    "spec": "npx cypress run --spec 'cypress/integration/kliknięcie.js' --headed",
+    "chrome": "npx cypress run --browser chrome --spec 'cypress/integration/kliknięcie.js' --headed",
+    "firefox": "npm run spec -- --browser firefox",
+    "browser": "npm run spec -- --browser firefox & npm run spec -- --browser edge",
+    "delete:reports": "rm cypress/results/* || true",
+    "prereport": "npm run delete:reports"
+  },
+  "keywords": [
+    "cypress",
+    "testy",
+    "automatyczne"
+  ],
+  "author": "Dariusz Dulemab",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/cypress": "^1.1.3",
+    "@typescript-eslint/eslint-plugin": "^5.59.5",
+    "@typescript-eslint/parser": "^5.59.5",
+    "cypress": "^12.11.0",
+    "cypress-audit": "^1.1.0",
+    "cypress-dark": "^1.8.3",
+    "cypress-file-upload": "^5.0.8",
+    "cypress-multi-reporters": "^1.6.3",
+    "eslint": "^8.40.0",
+    "eslint-plugin-react": "^7.32.2",
+    "mocha-junit-reporter": "^2.2.0"
+  },
+  "dependencies": {
+    "faker": "^6.6.6"
+  }
+}
