@@ -1,7 +1,7 @@
 import { describe, before, it } from 'mocha';
-import { originDomain } from '../../Pages/components/Magento/vaiablesMagento.cy';
-import authorization, { } from "../../Pages/components/Magento/authorization";
-import registerFormPage, { } from "../../Pages/components/Magento/registerFormPage";
+import { originDomain } from '../../Pages/components/Magento/VariablesMagento.cy';
+import Authorization, { } from "../../Pages/components/Magento/Authorization";
+import RegisterFormPage, { } from "../../Pages/components/Magento/RegisterFormPage";
 
 describe("E2E-Register a new user", () => {
     before(() => {
@@ -9,20 +9,22 @@ describe("E2E-Register a new user", () => {
     });
 
     it('Click on register button', () => {
-        authorization.clickOnSignInButton();
-        authorization.clickOnCreateAccountButton();
+
+        Authorization.clickOnSignInButton();
+        Authorization.clickOnCreateAccountButton();
 
         const registerpage = `${originDomain}customer/account/create/`;
         cy.url().should('eq', registerpage);
     });
 
     it('Complete registration fields, and create an account', () => {
-        registerFormPage.fillFirstName();
-        registerFormPage.fillLastName();
-        registerFormPage.fillEmail();
-        registerFormPage.fillPassword();
-        registerFormPage.confirmPassword();
-        authorization.clickOnCreateAnAccountButton();
+
+        RegisterFormPage.fillFirstName();
+        RegisterFormPage.fillLastName();
+        RegisterFormPage.fillEmail();
+        RegisterFormPage.fillPassword()
+        RegisterFormPage.confirmPassword();
+        Authorization.clickOnCreateAnAccountButton();
 
         const accountPage = `${originDomain}customer/account/`;
         cy.url().should('eq', accountPage);
@@ -32,8 +34,9 @@ describe("E2E-Register a new user", () => {
     });
 
     it('User should be logged out', () => {
-        authorization.clickOnTheBMList();
-        authorization.clickOnSignOutButton();
+
+        Authorization.clickOnTheBMList();
+        Authorization.clickOnSignOutButton();
         cy.wait(10000);
         const logout = `${originDomain}`;
         cy.url().should('eq', logout);

@@ -1,5 +1,5 @@
-import { userEmail, passwordd } from "../../components/Magento/vaiablesMagento.cy";
-class loginFormPage {
+import { userEmail, passwordd } from "./VariablesMagento.cy";
+class LoginFormPage {
 
     get email() {
         return cy.get('#email')
@@ -14,11 +14,17 @@ class loginFormPage {
         this.password.type(passwordd)
     }
     get signIn() {
-        return cy.get('.login-container > .block-customer-login > .block-content > #login-form > .fieldset > .actions-toolbar > div.primary > #send2 > span')
+        return cy.get('.panel > .header > .authorization-link > a')
     }
     clickOnSignInButton(signIn) {
         this.signIn.click();
     }
+    get signIn2() {
+        return cy.get('.login-container > .block-customer-login > .block-content > #login-form > .fieldset > .actions-toolbar > div.primary > #send2')
+    }
+    clickOnSignInButton2(signIn2) {
+        this.signIn2.click();
+    }
 
 }
-export default new loginFormPage();
+export default new LoginFormPage();
